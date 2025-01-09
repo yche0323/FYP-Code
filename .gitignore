@@ -1,0 +1,12 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+venv39/
+.env/
+
+# Other
+*.log
+*.sqlite3
