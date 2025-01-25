@@ -36,7 +36,6 @@ def woclsa(dataframe, target_col, opts={'N': 10, 'T': 3, 'b': 1}):
     Xgb = np.zeros([1, dim], dtype='int')
     fitG = float('inf')
     best_result = None
-    best_model = None
 
     t = 0
     print("Generation:", t + 1)
@@ -49,7 +48,6 @@ def woclsa(dataframe, target_col, opts={'N': 10, 'T': 3, 'b': 1}):
             Xgb[0,:] = X[i,:]
             fitG = fit[i,0]
             best_result = result[:-1]
-            best_model = result[-1]
 
     curve = np.zeros([1, max_iter], dtype='float')
     curve[0,t] = fitG.copy()
@@ -93,12 +91,10 @@ def woclsa(dataframe, target_col, opts={'N': 10, 'T': 3, 'b': 1}):
                 Xgb[0,:] = X[i,:]
                 fitG = fit[i,0]
                 best_result = result[:-1]
-                best_model = result[-1]
 
         curve[0,t] = fitG.copy()
         # print("Best (WOA):", curve[0,t])
         # print("Best params:", Xgb)
         t += 1
     
-    best_model.save('model.h5')
     return best_result
